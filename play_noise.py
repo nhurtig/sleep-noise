@@ -11,7 +11,7 @@ import sys, math, random, struct, datetime
 SAMPLE_RATE = 44100
 BASS_FREQ   = 50.0
 BASS_MIX    = 0.75
-AMPLITUDE   = 0.8
+AMPLITUDE   = 1.2
 CHUNK       = 4096
 NOISE_SECS  = 60   # pre-generated noise buffer length
 
