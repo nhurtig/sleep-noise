@@ -11,10 +11,12 @@ import sys, math, random, struct, datetime
 
 SAMPLE_RATE = 44100
 BASS_FREQ = 50.0
-BASS_MIX = 0.75
-AMPLITUDE = 1.2
+BASS_MIX = 0.0
+AMPLITUDE = 2
 CHUNK = 4096
-NOISE_SECS = 60  # pre-generated noise buffer length
+NOISE_SECS = 1  # pre-generated noise buffer length
+
+BROWNNESS = 0.02
 
 RAMP_START = 21 * 60  # 21:00
 RAMP_END = 21 * 60 + 15  # 21:15
@@ -41,7 +43,7 @@ n = SAMPLE_RATE * NOISE_SECS
 b = 0.0
 noise_buf = []
 for _ in range(n):
-    b = (b + random.uniform(-1.0, 1.0) * 0.02) / 1.02
+    b = (b + random.uniform(-1.0, 1.0) * BROWNNESS) / (1 + BROWNNESS)
     noise_buf.append(b)
 peak = max(abs(s) for s in noise_buf)
 noise_buf = [s / peak for s in noise_buf]
